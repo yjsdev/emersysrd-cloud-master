@@ -6,7 +6,7 @@ server:
 spring:
   application:
     # 应用名称
-    name: emerduty-example
+    name: emerduty-api
   profiles:
     # 环境配置
     active: dev

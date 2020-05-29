@@ -1,8 +1,9 @@
 package com.emersysrd.emerduty;
 
-import com.ruoyi.common.security.annotation.EnableCustomConfig;
+import com.ruoyi.common.security.annotation.EnableCustomConfig2;
 import com.ruoyi.common.security.annotation.EnableRyFeignClients;
 import com.ruoyi.common.swagger.annotation.EnableCustomSwagger2;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 
@@ -12,7 +13,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @auther kim
  * @create 2020-05-25 16:10
  */
-@EnableCustomConfig
+@EnableCustomConfig2
 @EnableCustomSwagger2
 @EnableRyFeignClients
 @SpringCloudApplication

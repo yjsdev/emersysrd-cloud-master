@@ -16,7 +16,7 @@
         emersysrd-modules业务模块
     </description>
     <modules>
-        <module>emersysrd-emerduty-example</module>
+        <module>emersysrd-emerduty-api</module>
     </modules>
 
 </project>
