@@ -1,3 +1,4 @@
+#开发测试-部署手册
 #环境部署
 #准备工作
 JDK >= 1.8 (推荐1.8版本)
@@ -11,35 +12,36 @@ nacos >= 1.1.0
 
 因为本项目是前后端分离的，所以需要前后端都启动好，才能进行访问
 
-前往Gitee下载页面(https://gitee.com/y_project/RuoYi-Cloud)下载解压到工作目录
+前往GitLab下载页面(https://gitlab.corp.bm-sk.cn/yangjinsheng/emersysrd-cloud-master.git)下载解压到工作目录
 
 #后端运行
-1、导入ruoyi到Eclipse，菜单 File -> Import，然后选择 Maven -> Existing Maven Projects，点击 Next> 按钮，选择工作目录，然后点击 Finish 按钮，即可成功导入Eclipse会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
-2、创建数据库ry-cloud并导入数据脚本ry_2020520.sql（必须），quartz.sql（可选）
-3、创建数据库ry-config并导入数据脚本ry_config.sql（必须）
+1、导入emersysrd-cloud-master到IDEA，菜单 File -> Open，选择工作目录，然后点击 Finish 按钮，即可成功导入IDEA会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
+2、创建数据库emersysrd并导入数据脚本emersysrd_sys.sql（必须），emersysrd_quartz.sql（可选）
+3、创建数据库emersysrd_config并导入数据脚本emersysrd_config.sql（必须）
 4、配置nacos持久化，修改conf/application.properties文件，增加支持mysql数据源配置
 
 # db mysql
 spring.datasource.platform=mysql
 db.num=1
-db.url.0=jdbc:mysql://localhost:3306/ry-config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+db.url.0=jdbc:mysql://localhost:3306/emersysrd_db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
 db.user=root
 db.password=password
-5、打开运行基础模块（启动没有先后顺序）
 
+5、打开运行基础模块（启动没有先后顺序）
 RuoYiGatewayApplication （网关模块 必须）
 RuoYiAuthApplication （认证模块 必须）
 RuoYiSystemApplication （系统模块 必须）
 RuoYiMonitorApplication （监控中心 可选）
 RuoYiGenApplication （代码生成 可选）
 RuoYiJobApplication （定时任务 可选）
-提示
+...
 
+提示
 nacos官网支持三种部署模式参考 (https://nacos.io/zh-cn/docs/deployment.html)
 
 #前端运行
 # 进入项目目录
-cd ruoyi-ui
+cd emersysrd-vue-ui
 
 # 安装依赖
 npm install
@@ -52,8 +54,8 @@ npm run dev
 4、打开浏览器，输入：http://localhost:80 （默认账户 admin/admin123）
 若能正确展示登录页面，并能成功登录，菜单及页面展示正常，则表明环境搭建成功
 
-建议使用Git克隆，因为克隆的方式可以和RuoYi随时保持更新同步。使用Git命令克隆
-git clone https://gitee.com/y_project/RuoYi-Cloud.git
+建议使用Git克隆，因为克隆的方式可以和emersysrd-cloud-master随时保持更新同步。使用Git命令克隆
+git clone https://gitlab.corp.bm-sk.cn/yangjinsheng/emersysrd-cloud-master.git
 
 提示
 
@@ -152,7 +154,7 @@ http {
         server_name  localhost;
 
 		location / {
-            root   /home/ruoyi/projects/ruoyi-ui;
+            root   /home/emersysrd/projects/emersysrd-vue-ui;
 			try_files $uri $uri/ /index.html;
             index  index.html index.htm;
         }

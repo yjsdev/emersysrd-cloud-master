@@ -5,7 +5,7 @@ drop table if exists contacts_groups;
 create table contacts_groups
 (
   group_id    bigint(19) not null auto_increment comment '分组id',
-  group_name  varchar(30) default '' comment '分组名称',
+  group_name  varchar(30) not null comment '分组名称',
   group_type  varchar(30) default 'custom_type' comment '分组类别',
   order_num   int(10)     default 0 comment '显示顺序',
   revision    int         default 0 comment '乐观锁',
@@ -17,7 +17,7 @@ create table contacts_groups
   update_time datetime comment '更新时间',
   primary key (group_id)
 ) engine = innodb
-  auto_increment = 100 comment = '通讯录分组表';
+  auto_increment = 100 comment = '应急值守-通讯录分组表';
 -- ----------------------------
 -- 初始化-通讯录分组表数据
 -- ----------------------------
@@ -57,7 +57,7 @@ create table contacts_group_members
   remark        varchar(500) default '' comment '备注',
   primary key (member_id)
 ) engine = innodb
-  auto_increment = 1 comment = '通讯录成员表';
+  auto_increment = 1 comment = '应急值守-通讯录成员表';
 -- ----------------------------
 -- 初始化-通讯录成员表数据
 -- ----------------------------
@@ -94,7 +94,7 @@ create table contacts_member_property
   updated_by    varchar(32) comment '更新人 ''',
   updated_time  datetime comment '更新时间',
   primary key (pro_id)
-) comment = '通讯录成员属性';
+) comment = '应急值守-通讯录成员属性';
 -- ----------------------------
 -- 4、通讯录成员行为记录表
 -- ----------------------------
@@ -114,4 +114,4 @@ create table contacts_member_behavior
   updated_by   varchar(32)  default '' comment '更新人',
   updated_time datetime comment '更新时间',
   primary key (id)
-) comment = '通讯录成员行为记录';
+) comment = '应急值守-通讯录成员行为记录';

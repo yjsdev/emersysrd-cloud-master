@@ -5,15 +5,15 @@ import com.emersysrd.emerduty.domain.ContactsGroups;
 
 /**
  * 通讯录分组Mapper接口
- * 
+ *
  * @author kim
  * @date 2020-05-28
  */
-public interface ContactsGroupsMapper 
+public interface ContactsGroupsMapper
 {
     /**
      * 查询通讯录分组
-     * 
+     *
      * @param groupId 通讯录分组ID
      * @return 通讯录分组
      */
@@ -21,7 +21,7 @@ public interface ContactsGroupsMapper
 
     /**
      * 查询通讯录分组列表
-     * 
+     *
      * @param contactsGroups 通讯录分组
      * @return 通讯录分组集合
      */
@@ -29,7 +29,7 @@ public interface ContactsGroupsMapper
 
     /**
      * 新增通讯录分组
-     * 
+     *
      * @param contactsGroups 通讯录分组
      * @return 结果
      */
@@ -37,7 +37,7 @@ public interface ContactsGroupsMapper
 
     /**
      * 修改通讯录分组
-     * 
+     *
      * @param contactsGroups 通讯录分组
      * @return 结果
      */
@@ -45,7 +45,7 @@ public interface ContactsGroupsMapper
 
     /**
      * 删除通讯录分组
-     * 
+     *
      * @param groupId 通讯录分组ID
      * @return 结果
      */
@@ -53,9 +53,17 @@ public interface ContactsGroupsMapper
 
     /**
      * 批量删除通讯录分组
-     * 
+     *
      * @param groupIds 需要删除的数据ID
      * @return 结果
      */
     public int deleteContactsGroupsByIds(Long[] groupIds);
+
+    /**
+     * 查询分组是否存在成员
+     *
+     * @param groupIds 分组ID
+     * @return 结果
+     */
+    public int checkGroupExistMembers(Long[] groupIds);
 }

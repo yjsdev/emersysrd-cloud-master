@@ -1,34 +1,41 @@
-
+#开发测试-系统目录结构
 ## 系统模块
 
 ~~~
-com.ruoyi     
-├── ruoyi-ui              // 前端框架 [80]
-├── ruoyi-gateway         // 网关模块 [8080]
-├── ruoyi-auth            // 认证中心 [9200]
-├── ruoyi-api             // 接口模块
+com.emersysrd     
+├── emersysrd-vue-ui      // 前端框架 [80]
+├── emersysrd-modules     // 平台业务模块
+│       └── emersysrd-emerduty-api                    // 应急值守 [8201]
+│       └── emersysrd-guarantee-api                   // 综合保障 [8202]
+│       └── emersysrd-command-api                     // 应急指挥 [8203]
+│       └── emersysrd-app-api                         // 应急app  [8204]
+│
+com.ruoyi  
+├── ruoyi-gateway         // 系统网关模块 [8080]
+├── ruoyi-auth            // 系统认证中心 [9200]
+├── ruoyi-api             // 系统接口模块
 │       └── ruoyi-api-system                          // 系统接口
-├── ruoyi-common          // 通用模块
+├── ruoyi-common          // 系统通用模块
 │       └── ruoyi-common-core                         // 核心模块
 │       └── ruoyi-common-datascope                    // 权限范围
 │       └── ruoyi-common-log                          // 日志记录
 │       └── ruoyi-common-redis                        // 缓存服务
 │       └── ruoyi-common-security                     // 安全模块
 │       └── ruoyi-common-swagger                      // 系统接口
-├── ruoyi-modules         // 业务模块
+├── ruoyi-modules         // 系统业务模块
 │       └── ruoyi-system                              // 系统模块 [9201]
 │       └── ruoyi-gen                                 // 代码生成 [9202]
 │       └── ruoyi-job                                 // 定时任务 [9203]
-├── ruoyi-visual          // 图形化管理模块
+├── ruoyi-visual          // 系统图形化管理模块
 │       └── ruoyi-visual-monitor                      // 监控中心 [9100]
 ├──pom.xml                // 公共依赖
 ~~~
 
-## 架构图
+## 系统-架构图
 
 <img src="https://oscimg.oschina.net/oscnet/up-aaa2d885b0fba37e52b56f0948edde1c4fe.png"/>
 
-## 内置功能
+## 系统-内置功能
 
 1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
 2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。

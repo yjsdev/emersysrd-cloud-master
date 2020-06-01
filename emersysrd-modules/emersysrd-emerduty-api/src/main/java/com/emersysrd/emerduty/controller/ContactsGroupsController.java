@@ -9,8 +9,10 @@ import com.ruoyi.common.core.web.domain.AjaxResult;
 import com.ruoyi.common.core.web.page.TableDataInfo;
 import com.ruoyi.common.log.annotation.Log;
 import com.ruoyi.common.log.enums.BusinessType;
+import com.ruoyi.common.security.utils.SecurityUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -78,8 +80,9 @@ public class ContactsGroupsController extends BaseController
     @PreAuthorize("@ss.hasPermi('emerduty:groups:add')")
     @Log(title = "通讯录分组", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody ContactsGroups contactsGroups)
+    public AjaxResult add(@Validated @RequestBody ContactsGroups contactsGroups)
     {
+        contactsGroups.setCreateBy(SecurityUtils.getUsername());
         return toAjax(contactsGroupsService.insertContactsGroups(contactsGroups));
     }
 
@@ -89,8 +92,9 @@ public class ContactsGroupsController extends BaseController
     @PreAuthorize("@ss.hasPermi('emerduty:groups:edit')")
     @Log(title = "通讯录分组", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody ContactsGroups contactsGroups)
+    public AjaxResult edit(@Validated @RequestBody ContactsGroups contactsGroups)
     {
+        contactsGroups.setUpdateBy(SecurityUtils.getUsername());
         return toAjax(contactsGroupsService.updateContactsGroups(contactsGroups));
     }
 
@@ -102,6 +106,10 @@ public class ContactsGroupsController extends BaseController
 	@DeleteMapping("/{groupIds}")
     public AjaxResult remove(@PathVariable Long[] groupIds)
     {
+        if (contactsGroupsService.checkGroupExistMembers(groupIds))
+        {
+            return AjaxResult.error("分组存在成员,不允许删除");
+        }
         return toAjax(contactsGroupsService.deleteContactsGroupsByIds(groupIds));
     }
 }

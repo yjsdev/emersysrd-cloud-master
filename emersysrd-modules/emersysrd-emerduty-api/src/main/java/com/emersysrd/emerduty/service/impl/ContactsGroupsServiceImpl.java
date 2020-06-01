@@ -94,4 +94,17 @@ public class ContactsGroupsServiceImpl implements IContactsGroupsService
     {
         return contactsGroupsMapper.deleteContactsGroupsById(groupId);
     }
+
+    /**
+     * 查询分组是否存在成员
+     *
+     * @param groupIds 分组ID
+     * @return 结果 true 存在 false 不存在
+     */
+    @Override
+    public boolean checkGroupExistMembers(Long[] groupIds)
+    {
+        int result = contactsGroupsMapper.checkGroupExistMembers(groupIds);
+        return result > 0 ? true : false;
+    }
 }

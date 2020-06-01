@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emersysrd.emerduty.mapper.ContactsGroupMembersMapper">
+    
+    <resultMap type="ContactsGroupMembers" id="ContactsGroupMembersResult">
+        <result property="memberId"    column="MEMBER_ID"    />
+        <result property="memberName"    column="MEMBER_NAME"    />
+        <result property="deptId"    column="DEPT_ID"    />
+        <result property="deptName"    column="DEPT_NAME"    />
+        <result property="postId"    column="POST_ID"    />
+        <result property="postName"    column="POST_NAME"    />
+        <result property="groupId"    column="GROUP_ID"    />
+        <result property="status"    column="STATUS"    />
+        <result property="delFlag"    column="DEL_FLAG"    />
+        <result property="lastcallBy"    column="LASTCALL_BY"    />
+        <result property="lastcallDate"    column="LASTCALL_DATE"    />
+        <result property="revision"    column="REVISION"    />
+        <result property="createBy"    column="CREATE_BY"    />
+        <result property="createTime"    column="CREATE_TIME"    />
+        <result property="updateBy"    column="UPDATE_BY"    />
+        <result property="updateTime"    column="UPDATE_TIME"    />
+        <result property="remark"    column="REMARK"    />
+    </resultMap>
+
+    <sql id="selectContactsGroupMembersVo">
+        select MEMBER_ID, MEMBER_NAME, DEPT_ID, DEPT_NAME, POST_ID, POST_NAME, GROUP_ID, STATUS, DEL_FLAG, LASTCALL_BY, LASTCALL_DATE, REVISION, CREATE_BY, CREATE_TIME, UPDATE_BY, UPDATE_TIME, REMARK from contacts_group_members
+    </sql>
+
+    <select id="selectContactsGroupMembersList" parameterType="ContactsGroupMembers" resultMap="ContactsGroupMembersResult">
+        <include refid="selectContactsGroupMembersVo"/>
+        <where>  
+            <if test="memberName != null  and memberName != ''"> and MEMBER_NAME like concat('%', #{memberName}, '%')</if>
+            <if test="deptName != null  and deptName != ''"> and DEPT_NAME like concat('%', #{deptName}, '%')</if>
+            <if test="postName != null  and postName != ''"> and POST_NAME like concat('%', #{postName}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectContactsGroupMembersById" parameterType="Long" resultMap="ContactsGroupMembersResult">
+        <include refid="selectContactsGroupMembersVo"/>
+        where MEMBER_ID = #{memberId}
+    </select>
+        
+    <insert id="insertContactsGroupMembers" parameterType="ContactsGroupMembers" useGeneratedKeys="true" keyProperty="memberId">
+        insert into contacts_group_members
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memberName != null  and memberName != ''">MEMBER_NAME,</if>
+            <if test="deptId != null  and deptId != ''">DEPT_ID,</if>
+            <if test="deptName != null  and deptName != ''">DEPT_NAME,</if>
+            <if test="postId != null ">POST_ID,</if>
+            <if test="postName != null  and postName != ''">POST_NAME,</if>
+            <if test="groupId != null ">GROUP_ID,</if>
+            <if test="status != null  and status != ''">STATUS,</if>
+            <if test="delFlag != null  and delFlag != ''">DEL_FLAG,</if>
+            <if test="lastcallBy != null  and lastcallBy != ''">LASTCALL_BY,</if>
+            <if test="lastcallDate != null ">LASTCALL_DATE,</if>
+            <if test="revision != null ">REVISION,</if>
+            <if test="createBy != null  and createBy != ''">CREATE_BY,</if>
+            <if test="createTime != null ">CREATE_TIME,</if>
+            <if test="updateBy != null  and updateBy != ''">UPDATE_BY,</if>
+            <if test="updateTime != null ">UPDATE_TIME,</if>
+            <if test="remark != null  and remark != ''">REMARK,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memberName != null  and memberName != ''">#{memberName},</if>
+            <if test="deptId != null  and deptId != ''">#{deptId},</if>
+            <if test="deptName != null  and deptName != ''">#{deptName},</if>
+            <if test="postId != null ">#{postId},</if>
+            <if test="postName != null  and postName != ''">#{postName},</if>
+            <if test="groupId != null ">#{groupId},</if>
+            <if test="status != null  and status != ''">#{status},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+            <if test="lastcallBy != null  and lastcallBy != ''">#{lastcallBy},</if>
+            <if test="lastcallDate != null ">#{lastcallDate},</if>
+            <if test="revision != null ">#{revision},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="remark != null  and remark != ''">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateContactsGroupMembers" parameterType="ContactsGroupMembers">
+        update contacts_group_members
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="memberName != null  and memberName != ''">MEMBER_NAME = #{memberName},</if>
+            <if test="deptId != null  and deptId != ''">DEPT_ID = #{deptId},</if>
+            <if test="deptName != null  and deptName != ''">DEPT_NAME = #{deptName},</if>
+            <if test="postId != null ">POST_ID = #{postId},</if>
+            <if test="postName != null  and postName != ''">POST_NAME = #{postName},</if>
+            <if test="groupId != null ">GROUP_ID = #{groupId},</if>
+            <if test="status != null  and status != ''">STATUS = #{status},</if>
+            <if test="delFlag != null  and delFlag != ''">DEL_FLAG = #{delFlag},</if>
+            <if test="lastcallBy != null  and lastcallBy != ''">LASTCALL_BY = #{lastcallBy},</if>
+            <if test="lastcallDate != null ">LASTCALL_DATE = #{lastcallDate},</if>
+            <if test="revision != null ">REVISION = #{revision},</if>
+            <if test="createBy != null  and createBy != ''">CREATE_BY = #{createBy},</if>
+            <if test="createTime != null ">CREATE_TIME = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">UPDATE_BY = #{updateBy},</if>
+            <if test="updateTime != null ">UPDATE_TIME = #{updateTime},</if>
+            <if test="remark != null  and remark != ''">REMARK = #{remark},</if>
+        </trim>
+        where MEMBER_ID = #{memberId}
+    </update>
+
+    <delete id="deleteContactsGroupMembersById" parameterType="Long">
+        delete from contacts_group_members where MEMBER_ID = #{memberId}
+    </delete>
+
+    <delete id="deleteContactsGroupMembersByIds" parameterType="String">
+        delete from contacts_group_members where MEMBER_ID in 
+        <foreach item="memberId" collection="array" open="(" separator="," close=")">
+            #{memberId}
+        </foreach>
+    </delete>
+    
+</mapper>
