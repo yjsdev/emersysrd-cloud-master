@@ -1,20 +1,20 @@
-#开发测试-部署手册
-#环境部署
-#准备工作
+# 开发测试-部署手册
+# 环境部署
+# 准备工作
 JDK >= 1.8 (推荐1.8版本)
 Mysql >= 5.5.0 (推荐5.7版本)
 Redis >= 3.0
 Maven >= 3.0
 Node >= 10
 nacos >= 1.1.0
-#运行系统
+# 运行系统
 提示
 
 因为本项目是前后端分离的，所以需要前后端都启动好，才能进行访问
 
 前往GitLab下载页面(https://gitlab.corp.bm-sk.cn/yangjinsheng/emersysrd-cloud-master.git)下载解压到工作目录
 
-#后端运行
+# 后端运行
 1、导入emersysrd-cloud-master到IDEA，菜单 File -> Open，选择工作目录，然后点击 Finish 按钮，即可成功导入IDEA会自动加载Maven依赖包，初次加载会比较慢（根据自身网络情况而定）
 2、创建数据库emersysrd并导入数据脚本emersysrd_sys.sql（必须），emersysrd_quartz.sql（可选）
 3、创建数据库emersysrd_config并导入数据脚本emersysrd_config.sql（必须）
@@ -39,7 +39,7 @@ RuoYiJobApplication （定时任务 可选）
 提示
 nacos官网支持三种部署模式参考 (https://nacos.io/zh-cn/docs/deployment.html)
 
-#前端运行
+# 前端运行
 # 进入项目目录
 cd emersysrd-vue-ui
 
@@ -61,12 +61,12 @@ git clone https://gitlab.corp.bm-sk.cn/yangjinsheng/emersysrd-cloud-master.git
 
 前端安装完node后，最好设置下淘宝的镜像源，不建议使用cnpm（可能会出现奇怪的问题）
 
-#部署系统
+# 部署系统
 提示
 
 因为本项目是前后端分离的，所以需要前后端都部署好，才能进行访问
 
-#后端部署
+# 后端部署
 bin/package.bat 在项目的目录下执行
 然后会在项目下生成 target文件夹包含 war 或jar
 
@@ -123,7 +123,7 @@ publicPath: './' //请根据自己路径来配置更改
 export default new Router({
   mode: 'hash', // hash模式
 })
-#环境变量
+# 环境变量
 所有测试环境或者正式环境变量的配置都在 .env.development等 .env.xxxx文件中。
 
 它们都会通过 webpack.DefinePlugin 插件注入到全局。
@@ -136,7 +136,7 @@ export default new Router({
 
 console.log(process.env.VUE_APP_xxxx)
 
-#Nginx配置
+# Nginx配置
 worker_processes  1;
 
 events {
@@ -174,7 +174,7 @@ http {
     }
 }
 
-#常见问题
+# 常见问题
 如果使用Mac 需要修改application.yml文件路径profile
 如果使用Linux 提示表不存在，设置大小写敏感配置在/etc/my.cnf 添加lower_case_table_names=1，重启MYSQL服务
 如果提示当前权限不足，无法写入文件请检查profile是否可读可写，或者无法访问此目录
