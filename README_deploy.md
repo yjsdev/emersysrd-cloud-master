@@ -21,7 +21,14 @@
 3. 创建数据库emersysrd_config并导入数据脚本emersysrd_config.sql（必须）
 4. 配置nacos持久化，修改conf/application.properties文件，增加支持mysql数据源配置
 
-5. 打开运行基础模块（启动没有先后顺序）
+# db mysql
+    spring.datasource.platform=mysql
+    db.num=1
+    db.url.0=jdbc:mysql://localhost:3306/emersysrd_db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    db.user=root
+    db.password=password
+
+# 打开运行基础模块（启动没有先后顺序）
 - RuoYiGatewayApplication （网关模块 必须）
 - RuoYiAuthApplication （认证模块 必须）
 - RuoYiSystemApplication （系统模块 必须）
@@ -29,13 +36,6 @@
 - RuoYiGenApplication （代码生成 可选）
 - RuoYiJobApplication （定时任务 可选）
 - ...
-
-# db mysql
-    spring.datasource.platform=mysql
-    db.num=1
-    db.url.0=jdbc:mysql://localhost:3306/emersysrd_db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    db.user=root
-    db.password=password
 
 提示
 nacos官网支持三种部署模式参考 (https://nacos.io/zh-cn/docs/deployment.html)
