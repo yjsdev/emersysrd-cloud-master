@@ -1,4 +1,4 @@
-# 开发测试-部署手册
+# 开发-测试-部署手册
 # 环境部署
 # 准备工作
 - JDK >= 1.8 (推荐1.8版本)
@@ -188,4 +188,4 @@ console.log(process.env.VUE_APP_xxxx)
 如果使用Mac 需要修改application.yml文件路径profile
 如果使用Linux 提示表不存在，设置大小写敏感配置在/etc/my.cnf 添加lower_case_table_names=1，重启MYSQL服务
 如果提示当前权限不足，无法写入文件请检查profile是否可读可写，或者无法访问此目录
-如遇到问题到Issues反馈
+如遇到问题到群组或Issues反馈
