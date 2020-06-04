@@ -1,45 +1,3 @@
-# 框架简介——快速了解
-
-基于Spring Boot、Spring Cloud & Alibaba、OAuth2、Vue、Element-Ul的前后端分离微服务极速后台开发框架。
-
-# 主要特性
-
-- 完全响应式布局（支持电脑、平板、手机等所有主流设备）
-- 强大的一键生成功能（包括控制器、模型、视图、菜单等）
-- 支持多数据源，简单配置即可实现切换。
-- 支持按钮及数据权限，可自定义部门数据权限。
-- 对常用js插件进行二次封装，使js代码变得简洁，更加易维护
-- 完善的XSS防范及脚本过滤，彻底杜绝XSS攻击
-- Maven多项目依赖，模块及插件分项目，尽量松耦合，方便模块升级、增减模块。
-- 国际化支持，服务端及客户端支持
-- 完善的日志记录体系简单注解即可实现
-
-# 技术选型
-#### 1、系统环境
-
-- Java EE 8
-- Servlet 3.0
-- Apache Maven 3
-
-#### 2、主框架
-
-- Spring Boot 2.2
-- Spring Cloud Hoxton.SR3
-- Spring Framework 5.1
-- Spring Security 5.1
-
-#### 3、持久层
-
-- Apache MyBatis 3.4
-- Hibernate Validation 6.0
-- Alibaba Druid 1.1
-
-#### 4、视图层
-
-- Vue 2.6
-- Axios 0.18
-- Element UI 2.11
-
 # 系统目录结构
 ## 系统模块
 
@@ -97,6 +55,48 @@ com.ruoyi
 16. 在线构建器：拖动表单元素生成相应的HTML代码。
 17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
+# 框架简介——快速了解
+
+基于Spring Boot、Spring Cloud & Alibaba、OAuth2、Vue、Element-Ul的前后端分离微服务极速后台开发框架。
+
+# 主要特性
+
+- 完全响应式布局（支持电脑、平板、手机等所有主流设备）
+- 强大的一键生成功能（包括控制器、模型、视图、菜单等）
+- 支持多数据源，简单配置即可实现切换。
+- 支持按钮及数据权限，可自定义部门数据权限。
+- 对常用js插件进行二次封装，使js代码变得简洁，更加易维护
+- 完善的XSS防范及脚本过滤，彻底杜绝XSS攻击
+- Maven多项目依赖，模块及插件分项目，尽量松耦合，方便模块升级、增减模块。
+- 国际化支持，服务端及客户端支持
+- 完善的日志记录体系简单注解即可实现
+
+# 技术选型
+#### 1、系统环境
+
+- Java EE 8
+- Servlet 3.0
+- Apache Maven 3
+
+#### 2、主框架
+
+- Spring Boot 2.2
+- Spring Cloud Hoxton.SR3
+- Spring Framework 5.1
+- Spring Security 5.1
+
+#### 3、持久层
+
+- Apache MyBatis 3.4
+- Hibernate Validation 6.0
+- Alibaba Druid 1.1
+
+#### 4、视图层
+
+- Vue 2.6
+- Axios 0.18
+- Element UI 2.11
+
 # 核心技术
 
 > 前端技术栈 ES6、vue、vuex、vue-router、vue-cli、axios、element-ui
@@ -109,6 +109,7 @@ com.ruoyi
 1、介绍
 
 - Spring Boot是一款开箱即用框架，提供各种默认配置来简化项目配置。让我们的Spring应用变的更轻量化、更快的入门。 在主程序执行main函数就可以运行。你也可以打包你的应用为jar并通过使用java -jar来运行你的Web应用。它遵循"约定优先于配置"的原则， 使用SpringBoot只需很少的配置，大部分的时候直接使用默认的配置即可。可以与Spring Cloud的微服务无缝结合。
+
 `Spring Boot2.0 环境要求必须是jdk8或以上版本，Tomcat8或以上版本`
 
 2、优点
